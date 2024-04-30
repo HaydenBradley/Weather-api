@@ -1,0 +1,12 @@
+<%= form_tag(dashboard_index_path, method: :get) do %>
+  <%= text_field_tag :city, nil, placeholder: "Enter city name" %>
+  <%= submit_tag "Get Weather" %>
+<% end %>
+<%= debug @weather_data %>
+
+<% if @weather_data.present? %>
+  <h2>Current Weather for <%= @city %></h2>
+  <p>Temperature: <%= @weather_data['current']['temp_c'] %>°C</p>
+  <p>Humidity: <%= @weather_data['current']['humidity'] %>%</p>
+  <p>Condition: <%= @weather_data['current']['condition']['text'] %></p>
+<% end %>
